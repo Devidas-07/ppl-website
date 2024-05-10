@@ -7,7 +7,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<title>RSK Players List</title>
+<title>PC Players List</title>
 </head>
 
 <body>
@@ -33,14 +33,16 @@
 					<li class="nav-item"><a class="nav-link text-white"
 						href="about">About Us</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
-						href="add-rsk-players">Add RSK Player</a>
+						href="add-pc-player">Add PC Player</a>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div>
 
-		<h2 th:if="${#lists.size(teams) > 0}">Team Information</h2>
+		<h3>
+				<span th:text="${teams[0].teams.name}"></span>
+			</h3>
 		<div class="row" th:if="${#lists.size(teams) > 0}">
 			<div class="vn-trophyBtn">
 				<img src="https://www.iplt20.com/assets/images/team-trophy.png"
@@ -78,18 +80,17 @@
 			</thead>
 			<tbody>
 				<tr th:each="player : ${teams}">
+				
 					<td><a class="btn btn-success btn-sm"
-						th:href="@{/add-rsk-to-perfect11/{id} (id=${player.id})}">ADD TO PERFECT 11</a>
+						th:href="@{/add-pc-to-perfect11/{id} (id=${player.id})}">ADD TO PERFECT 11</a>
 					</td>
 					<td th:text="${player.playerName}"></td>
 					<td th:text="${player.roll}"></td>
 					<td th:text="${player.nation}"></td>
 					<td><a class="btn btn-primary btn-sm"
-						th:href="@{/update-rsk-players/{id} (id=${player.id})}">UPDATE</a>
-					</td>
+						th:href="@{/update-pc-player/{id} (id=${player.id})}">UPDATE</a></td>
 					<td><a class="btn btn-danger btn-sm"
-						th:href="@{/delete-rsk-player/{id} (id=${player.id})}">DELETE</a>
-					</td>
+						th:href="@{/delete-pc-player/{id} (id=${player.id})}">DELETE</a>
 				</tr>
 			</tbody>
 		</table>

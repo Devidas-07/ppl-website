@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.dto.Perfect11;
 import com.project.dto.RskPlayers;
+import com.project.repository.Perfect11Repository;
 import com.project.service.RskService;
 
 @Controller
@@ -21,6 +23,8 @@ public class RskController {
 	
 	@Autowired
 	RskService service;
+	@Autowired
+	Perfect11Repository perfectRepo;
 	
 	@GetMapping("/get-rsk-details")
 	public ModelAndView getRskDetails() {
@@ -47,6 +51,14 @@ public class RskController {
 	public String addRskPlayers() {
 		return "addRskPlayers";
 	}
+	@RequestMapping("/add-rsk-to-perfect11/{id}")
+	public String addToPerfect11(@PathVariable("id")int id) {
+		RskPlayers p = service.getRskPlayerById(id);
+		Perfect11 perfect = new Perfect11(p.getId(),p.getPlayerName(),p.getRoll(),p.getNation(),p.getTeams());
+		perfectRepo.save(perfect);
+		return "redirect:/get-perfect11";
+	}
+	
 
 	
 	

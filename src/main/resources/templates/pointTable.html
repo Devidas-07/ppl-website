@@ -21,6 +21,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<img class="img-fluid" style="width: 70px;" src="Images/PPL-PNG-logo-removebg-preview.png">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="/">Home</a>
 					</li>
@@ -28,6 +29,8 @@
 					<li class="nav-item"><a class="nav-link text-white" href="point_table">Point Table</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="venue">Venues</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="about">About Us</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="get-point-table">Add team in Point Table</a></li>
+					
 				</ul>
 			</div>
 		</div>
@@ -44,6 +47,7 @@
 					<th scope="col">LOSS</th>
 					<th scope="col">NR</th>
 					<th scope="col">POINTS</th>
+					<th scope="col">Action1</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -55,6 +59,9 @@
 					<td th:text="${p.loss}"></td>
 					<td th:text="${p.nr}"></td>
 					<td th:text="${p.points}"></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{/update-point-table-by-id/{id} (id=${p.id})}">UPDATE</a>
+					</td>
 					
 					
 				</tr>
